@@ -34,7 +34,7 @@
 .#{$ionicons-prefix}android-earth:before,
 .#{$ionicons-prefix}android-folder:before,
 .#{$ionicons-prefix}android-forums:before,
-.#{$ionicons-prefix}android-friends:before,
+.#{$ionicons-prefix}android-song:before,
 .#{$ionicons-prefix}android-hand:before,
 .#{$ionicons-prefix}android-image:before,
 .#{$ionicons-prefix}android-inbox:before,
@@ -332,8 +332,8 @@
 .#{$ionicons-prefix}ios7-moon-outline:before,
 .#{$ionicons-prefix}ios7-more:before,
 .#{$ionicons-prefix}ios7-more-outline:before,
-.#{$ionicons-prefix}ios7-musical-note:before,
-.#{$ionicons-prefix}ios7-musical-notes:before,
+.#{$ionicons-prefix}ios7-songal-note:before,
+.#{$ionicons-prefix}ios7-songal-notes:before,
 .#{$ionicons-prefix}ios7-navigate:before,
 .#{$ionicons-prefix}ios7-navigate-outline:before,
 .#{$ionicons-prefix}ios7-paper:before,
@@ -466,7 +466,7 @@
 .#{$ionicons-prefix}monitor:before,
 .#{$ionicons-prefix}more:before,
 .#{$ionicons-prefix}mouse:before,
-.#{$ionicons-prefix}music-note:before,
+.#{$ionicons-prefix}song-note:before,
 .#{$ionicons-prefix}navicon:before,
 .#{$ionicons-prefix}navicon-round:before,
 .#{$ionicons-prefix}navigate:before,
@@ -638,7 +638,7 @@
 .#{$ionicons-prefix}android-earth:before { content: $ionicon-var-android-earth; }
 .#{$ionicons-prefix}android-folder:before { content: $ionicon-var-android-folder; }
 .#{$ionicons-prefix}android-forums:before { content: $ionicon-var-android-forums; }
-.#{$ionicons-prefix}android-friends:before { content: $ionicon-var-android-friends; }
+.#{$ionicons-prefix}android-song:before { content: $ionicon-var-android-song; }
 .#{$ionicons-prefix}android-hand:before { content: $ionicon-var-android-hand; }
 .#{$ionicons-prefix}android-image:before { content: $ionicon-var-android-image; }
 .#{$ionicons-prefix}android-inbox:before { content: $ionicon-var-android-inbox; }
@@ -936,8 +936,8 @@
 .#{$ionicons-prefix}ios7-moon-outline:before { content: $ionicon-var-ios7-moon-outline; }
 .#{$ionicons-prefix}ios7-more:before { content: $ionicon-var-ios7-more; }
 .#{$ionicons-prefix}ios7-more-outline:before { content: $ionicon-var-ios7-more-outline; }
-.#{$ionicons-prefix}ios7-musical-note:before { content: $ionicon-var-ios7-musical-note; }
-.#{$ionicons-prefix}ios7-musical-notes:before { content: $ionicon-var-ios7-musical-notes; }
+.#{$ionicons-prefix}ios7-songal-note:before { content: $ionicon-var-ios7-songal-note; }
+.#{$ionicons-prefix}ios7-songal-notes:before { content: $ionicon-var-ios7-songal-notes; }
 .#{$ionicons-prefix}ios7-navigate:before { content: $ionicon-var-ios7-navigate; }
 .#{$ionicons-prefix}ios7-navigate-outline:before { content: $ionicon-var-ios7-navigate-outline; }
 .#{$ionicons-prefix}ios7-paper:before { content: $ionicon-var-ios7-paper; }
@@ -1070,7 +1070,7 @@
 .#{$ionicons-prefix}monitor:before { content: $ionicon-var-monitor; }
 .#{$ionicons-prefix}more:before { content: $ionicon-var-more; }
 .#{$ionicons-prefix}mouse:before { content: $ionicon-var-mouse; }
-.#{$ionicons-prefix}music-note:before { content: $ionicon-var-music-note; }
+.#{$ionicons-prefix}song-note:before { content: $ionicon-var-song-note; }
 .#{$ionicons-prefix}navicon:before { content: $ionicon-var-navicon; }
 .#{$ionicons-prefix}navicon-round:before { content: $ionicon-var-navicon-round; }
 .#{$ionicons-prefix}navigate:before { content: $ionicon-var-navigate; }

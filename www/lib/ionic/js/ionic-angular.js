@@ -6378,9 +6378,9 @@ IonicModule.constant('$ionicNavViewConfig', {
  *     url: '/',
  *     templateUrl: 'home.html'
  *   })
- *   .state('music', {
- *     url: '/music',
- *     templateUrl: 'music.html'
+ *   .state('song', {
+ *     url: '/song',
+ *     templateUrl: 'song.html'
  *   });
  * });
  * ```
@@ -6397,7 +6397,7 @@ IonicModule.constant('$ionicNavViewConfig', {
  *   <ion-view title="'Home'">
  *     <ion-content ng-controller="HomeCtrl">
  *       <!-- The content of the page -->
- *       <a href="#/music">Go to music page!</a>
+ *       <a href="#/song">Go to song page!</a>
  *     </ion-content>
  *   </ion-view>
  * </script>

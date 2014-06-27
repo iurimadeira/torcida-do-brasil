@@ -14503,7 +14503,7 @@ function $FilterProvider($provide) {
  * @example
    <example>
      <file name="index.html">
-       <div ng-init="friends = [{name:'John', phone:'555-1276'},
+       <div ng-init="song = [{name:'John', phone:'555-1276'},
                                 {name:'Mary', phone:'800-BIG-MARY'},
                                 {name:'Mike', phone:'555-4321'},
                                 {name:'Adam', phone:'555-5678'},
@@ -14513,9 +14513,9 @@ function $FilterProvider($provide) {
        Search: <input ng-model="searchText">
        <table id="searchTextResults">
          <tr><th>Name</th><th>Phone</th></tr>
-         <tr ng-repeat="friend in friends | filter:searchText">
-           <td>{{friend.name}}</td>
-           <td>{{friend.phone}}</td>
+         <tr ng-repeat="song in song | filter:searchText">
+           <td>{{song.title}}</td>
+           <td>{{song.phone}}</td>
          </tr>
        </table>
        <hr>
@@ -14525,15 +14525,15 @@ function $FilterProvider($provide) {
        Equality <input type="checkbox" ng-model="strict"><br>
        <table id="searchObjResults">
          <tr><th>Name</th><th>Phone</th></tr>
-         <tr ng-repeat="friendObj in friends | filter:search:strict">
-           <td>{{friendObj.name}}</td>
-           <td>{{friendObj.phone}}</td>
+         <tr ng-repeat="songObj in song | filter:search:strict">
+           <td>{{songObj.name}}</td>
+           <td>{{songObj.phone}}</td>
          </tr>
        </table>
      </file>
      <file name="protractor.js" type="protractor">
-       var expectFriendNames = function(expectedNames, key) {
-         element.all(by.repeater(key + ' in friends').column(key + '.name')).then(function(arr) {
+       var expectSongNames = function(expectedNames, key) {
+         element.all(by.repeater(key + ' in song').column(key + '.name')).then(function(arr) {
            arr.forEach(function(wd, i) {
              expect(wd.getText()).toMatch(expectedNames[i]);
            });
@@ -14544,18 +14544,18 @@ function $FilterProvider($provide) {
          var searchText = element(by.model('searchText'));
          searchText.clear();
          searchText.sendKeys('m');
-         expectFriendNames(['Mary', 'Mike', 'Adam'], 'friend');
+         expectSongNames(['Mary', 'Mike', 'Adam'], 'song');
 
          searchText.clear();
          searchText.sendKeys('76');
-         expectFriendNames(['John', 'Julie'], 'friend');
+         expectSongNames(['John', 'Julie'], 'song');
        });
 
        it('should search in specific fields when filtering with a predicate object', function() {
          var searchAny = element(by.model('search.$'));
          searchAny.clear();
          searchAny.sendKeys('i');
-         expectFriendNames(['Mary', 'Mike', 'Julie', 'Juliette'], 'friendObj');
+         expectSongNames(['Mary', 'Mike', 'Julie', 'Juliette'], 'songObj');
        });
        it('should use a equal comparison when comparator is true', function() {
          var searchName = element(by.model('search.name'));
@@ -14563,7 +14563,7 @@ function $FilterProvider($provide) {
          searchName.clear();
          searchName.sendKeys('Julie');
          strict.click();
-         expectFriendNames(['Julie'], 'friendObj');
+         expectSongNames(['Julie'], 'songObj');
        });
      </file>
    </example>
@@ -15301,7 +15301,7 @@ function limitToFilter(){
      <file name="index.html">
        <script>
          function Ctrl($scope) {
-           $scope.friends =
+           $scope.song =
                [{name:'John', phone:'555-1212', age:10},
                 {name:'Mary', phone:'555-9876', age:19},
                 {name:'Mike', phone:'555-4321', age:21},
@@ -15314,17 +15314,17 @@ function limitToFilter(){
          <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
          <hr/>
          [ <a href="" ng-click="predicate=''">unsorted</a> ]
-         <table class="friend">
+         <table class="song">
            <tr>
              <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
                  (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
              <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
              <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
            </tr>
-           <tr ng-repeat="friend in friends | orderBy:predicate:reverse">
-             <td>{{friend.name}}</td>
-             <td>{{friend.phone}}</td>
-             <td>{{friend.age}}</td>
+           <tr ng-repeat="song in song | orderBy:predicate:reverse">
+             <td>{{song.title}}</td>
+             <td>{{song.phone}}</td>
+             <td>{{song.age}}</td>
            </tr>
          </table>
        </div>
@@ -15341,17 +15341,17 @@ function limitToFilter(){
   <example>
     <file name="index.html">
       <div ng-controller="Ctrl">
-        <table class="friend">
+        <table class="song">
           <tr>
             <th><a href="" ng-click="reverse=false;order('name', false)">Name</a>
               (<a href="" ng-click="order('-name',false)">^</a>)</th>
             <th><a href="" ng-click="reverse=!reverse;order('phone', reverse)">Phone Number</a></th>
             <th><a href="" ng-click="reverse=!reverse;order('age',reverse)">Age</a></th>
           </tr>
-          <tr ng-repeat="friend in friends">
-            <td>{{friend.name}}</td>
-            <td>{{friend.phone}}</td>
-            <td>{{friend.age}}</td>
+          <tr ng-repeat="song in song">
+            <td>{{song.title}}</td>
+            <td>{{song.phone}}</td>
+            <td>{{song.age}}</td>
           </tr>
         </table>
       </div>
@@ -15360,7 +15360,7 @@ function limitToFilter(){
     <file name="script.js">
       function Ctrl($scope, $filter) {
         var orderBy = $filter('orderBy');
-        $scope.friends = [
+        $scope.song = [
           { name: 'John',    phone: '555-1212',    age: 10 },
           { name: 'Mary',    phone: '555-9876',    age: 19 },
           { name: 'Mike',    phone: '555-4321',    age: 21 },
@@ -15369,7 +15369,7 @@ function limitToFilter(){
         ];
 
         $scope.order = function(predicate, reverse) {
-          $scope.friends = orderBy($scope.friends, predicate, reverse);
+          $scope.song = orderBy($scope.song, predicate, reverse);
         };
         $scope.order('-age',false);
       }
@@ -20046,7 +20046,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  * then uses `ngRepeat` to display every person:
   <example module="ngAnimate" deps="angular-animate.js" animations="true">
     <file name="index.html">
-      <div ng-init="friends = [
+      <div ng-init="song = [
         {name:'John', age:25, gender:'boy'},
         {name:'Jessie', age:30, gender:'girl'},
         {name:'Johanna', age:28, gender:'girl'},
@@ -20058,11 +20058,11 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
         {name:'Patrick', age:40, gender:'boy'},
         {name:'Samantha', age:60, gender:'girl'}
       ]">
-        I have {{friends.length}} friends. They are:
-        <input type="search" ng-model="q" placeholder="filter friends..." />
+        I have {{song.length}} song. They are:
+        <input type="search" ng-model="q" placeholder="filter song..." />
         <ul class="example-animate-container">
-          <li class="animate-repeat" ng-repeat="friend in friends | filter:q">
-            [{{$index + 1}}] {{friend.name}} who is {{friend.age}} years old.
+          <li class="animate-repeat" ng-repeat="song in song | filter:q">
+            [{{$index + 1}}] {{song.title}} who is {{song.age}} years old.
           </li>
         </ul>
       </div>
@@ -20104,25 +20104,25 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
       }
     </file>
     <file name="protractor.js" type="protractor">
-      var friends = element.all(by.repeater('friend in friends'));
+      var song = element.all(by.repeater('song in song'));
 
       it('should render initial data set', function() {
-        expect(friends.count()).toBe(10);
-        expect(friends.get(0).getText()).toEqual('[1] John who is 25 years old.');
-        expect(friends.get(1).getText()).toEqual('[2] Jessie who is 30 years old.');
-        expect(friends.last().getText()).toEqual('[10] Samantha who is 60 years old.');
-        expect(element(by.binding('friends.length')).getText())
-            .toMatch("I have 10 friends. They are:");
+        expect(song.count()).toBe(10);
+        expect(song.get(0).getText()).toEqual('[1] John who is 25 years old.');
+        expect(song.get(1).getText()).toEqual('[2] Jessie who is 30 years old.');
+        expect(song.last().getText()).toEqual('[10] Samantha who is 60 years old.');
+        expect(element(by.binding('song.length')).getText())
+            .toMatch("I have 10 song. They are:");
       });
 
        it('should update repeater when filter predicate changes', function() {
-         expect(friends.count()).toBe(10);
+         expect(song.count()).toBe(10);
 
          element(by.model('q')).sendKeys('ma');
 
-         expect(friends.count()).toBe(2);
-         expect(friends.get(0).getText()).toEqual('[1] Mary who is 28 years old.');
-         expect(friends.last().getText()).toEqual('[2] Samantha who is 60 years old.');
+         expect(song.count()).toBe(2);
+         expect(song.get(0).getText()).toEqual('[1] Mary who is 28 years old.');
+         expect(song.last().getText()).toEqual('[2] Samantha who is 60 years old.');
        });
       </file>
     </example>
