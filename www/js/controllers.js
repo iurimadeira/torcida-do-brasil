@@ -4,6 +4,12 @@ angular.module('starter.controllers', [])
         function ($scope, $stateParams, songFactory) {
 
     getSong($stateParams.songId); 
+    songDetail = true;
+
+    $scope.myRightButtons = {
+        text: "Votar!",
+        type: "button button-clear button-positive"
+    }
 
     function getSong(id){
         songFactory.getSong(id)
@@ -22,6 +28,8 @@ angular.module('starter.controllers', [])
 
     $scope.status;
     $scope.songs;
+
+    songDetail = false;
 
     getSongs();
 

@@ -4,8 +4,11 @@
   The SongCtrl pulls data from the Song service (service.js)
   The Song service returns an array of song data
 -->
+<header-bar right-buttons="myRightButtons" title="myTitle"></header-bar>
+
 <ion-view title="{{song.title}}">
   <ion-content class="has-header" has-header="true" padding="true">
-  	<div ng-bind-html="song.lyrics"></div>
+  	<h4><div ng-bind-html="song.lyrics"></div></h4>
+  	Ritmo: {{song.rhythm}}
   </ion-content>
 </ion-view>

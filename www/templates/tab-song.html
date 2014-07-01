@@ -2,7 +2,8 @@
   <ion-content class="has-header">
     <ion-list>
       <ion-item ng-repeat="song in songs.songs" class="teste" type="item-text-wrap" href="#/tab/song/{{song.id}}">
-        {{song.id}} - {{song.title}}
+        {{song.title}}      
+        <p>{{song.preview}}</p>                
       </ion-item>
     </ion-list>
   </ion-content>
